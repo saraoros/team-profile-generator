@@ -1,4 +1,4 @@
-const generateEmployees = employeeArr => {
+function generateEmployees(data) {
     return `
    
     <div class="card-columns flex-md-column">
@@ -8,21 +8,21 @@ const generateEmployees = employeeArr => {
           <p class="card-text text-light"><i class="fa-solid fa-mug-hot"></i> Manager</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID:</li>
-          <li class="list-group-item">Email: </li>
-          <li class="list-group-item">Office Number: </li>
+          <li class="list-group-item">ID: ${managerId} </li>
+          <li class="list-group-item">Email: ${managerEmail} </li>
+          <li class="list-group-item">Office Number: ${managerOffice} </li>
         </ul>
       </div>
 
       <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold">Engineer's Name</h5>
+          <h5 class="card-title text-light font-weight-bold"> ${engineerName} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-glasses"></i>  Engineer</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID:</li>
-          <li class="list-group-item">Email: </li>
-          <li class="list-group-item">Github: </li>
+          <li class="list-group-item">ID: ${engineerId} </li>
+          <li class="list-group-item">Email: ${engineerEmail} </li>
+          <li class="list-group-item">Github: <a href="https://github.com/${data.github}"> </li>
         </ul>
       </div>
 
@@ -31,52 +31,51 @@ const generateEmployees = employeeArr => {
 
       <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold">Engineer's Name</h5>
-          <p class="card-text text-light"><i class="fa-solid fa-glasses"></i>  Engineer</p>
+          <h5 class="card-title text-light font-weight-bold"> ${engineerName} </h5>
+          <p class="card-text text-light"><i class="fa-solid fa-glasses"></i> Engineer</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID:</li>
-          <li class="list-group-item">Email: </li>
-          <li class="list-group-item">Github: </li>
+          <li class="list-group-item">ID: ${engineerId} </li>
+          <li class="list-group-item">Email: ${engineerEmail} </li>
+          <li class="list-group-item">Github: <a href="https://github.com/${data.github}"> </li>
         </ul>
       </div>
 
 
 <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold">Intern's Name</h5>
+          <h5 class="card-title text-light font-weight-bold"> ${internName} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-user-graduate"></i> Intern</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID:</li>
-          <li class="list-group-item">Email: </li>
-          <li class="list-group-item">School: </li>
+          <li class="list-group-item">ID:${internId} </li>
+          <li class="list-group-item">Email: ${internEmail} </li>
+          <li class="list-group-item">School: ${internSchool} </li>
         </ul>
       </div>
 
 
       <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-        <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold">Engineer's Name</h5>
-          <p class="card-text text-light"><i class="fa-solid fa-glasses"></i> Engineer</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: </li>
-          <li class="list-group-item">Email: </li>
-          <li class="list-group-item">Github: </li>
-        </ul>
+      <div class="card-body bg-primary">
+        <h5 class="card-title text-light font-weight-bold"> ${engineerName} </h5>
+        <p class="card-text text-light"><i class="fa-solid fa-glasses"></i>  Engineer</p>
       </div>
-
-</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">ID: ${engineerId} </li>
+        <li class="list-group-item">Email: ${engineerEmail} </li>
+        <li class="list-group-item">Github: <a href="https://github.com/${data.github}"> </li>
+      </ul>
+    </div>
 `
 }
 
 
 
 
-
-module.exports = templateData => {
-    const { manager, engineer, intern} = templateData;
+// Is this format correct? This is also from a module example!
+// Or can I just combine it all above under generateEmployees?
+module.exports = data => {
+    const { manager, engineer, intern} = data;
 
     return `
     <!DOCTYPE html>
@@ -109,3 +108,5 @@ module.exports = templateData => {
 `
     
 }
+
+module.exports = generateEmployees;

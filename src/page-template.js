@@ -1,10 +1,10 @@
-function generateEmployees(data) {
+function generateEmployees() {
     return `
    
     <div class="card-columns flex-md-column">
     <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold">Manager's Name</h5>
+          <h5 class="card-title text-light font-weight-bold"> ${managerName} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-mug-hot"></i> Manager</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -22,7 +22,7 @@ function generateEmployees(data) {
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${engineerId} </li>
           <li class="list-group-item">Email: ${engineerEmail} </li>
-          <li class="list-group-item">Github: <a href="https://github.com/${data.github}"> </li>
+          <li class="list-group-item">Github: <a href="https://github.com/${github}"> </li>
         </ul>
       </div>
 
@@ -37,7 +37,7 @@ function generateEmployees(data) {
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${engineerId} </li>
           <li class="list-group-item">Email: ${engineerEmail} </li>
-          <li class="list-group-item">Github: <a href="https://github.com/${data.github}"> </li>
+          <li class="list-group-item">Github: <a href="https://github.com/${github}"> </li>
         </ul>
       </div>
 
@@ -63,7 +63,7 @@ function generateEmployees(data) {
       <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${engineerId} </li>
         <li class="list-group-item">Email: ${engineerEmail} </li>
-        <li class="list-group-item">Github: <a href="https://github.com/${data.github}"> </li>
+        <li class="list-group-item">Github: <a href="https://github.com/${github}"> </li>
       </ul>
     </div>
 `

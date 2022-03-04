@@ -1,2 +1,2 @@
-const teamProfile = require('./lib/generateTeam');
-new teamProfile().makeProfile();
+const TeamProfile = require('./lib/generateTeam');
+new TeamProfile().promptQuestions();

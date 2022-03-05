@@ -1,22 +1,28 @@
 const Engineer = require('../lib/Engineer.js');
-
-jest.mock('../lib/Engineer');
+const engineer = new Engineer('Olivia', '1644' , `oliviasemail@sample.com`, 'oliviasHub' )
+//jest.mock('../lib/Engineer');
 
 test('creates a Engineer object', () => {
-  const engineer = new Engineer('Olivia');
-  expect(Engineer.name).toBe('Olivia');
+  expect(engineer.name).toBe('Olivia');
+  expect(engineer.id).toBe('1644');
+  expect(engineer.email).toBe(`oliviasemail@sample.com`);
+  expect(engineer.github).toBe(`oliviasHub`);
 });
 
 test('creates an ID for Engineer', () => {
-   expect(Engineer.id).toEqual(expect.any(Number)); 
+   expect(engineer.getId()).toBe('1644'); 
 });
 
 test('creates an email for Engineer', () => {
-   expect(Engineer.email).toContain('@'); 
+   expect(engineer.getEmail()).toBe(`oliviasemail@sample.com`); 
 });
 
 test('creates GitHub link for Engineer', () => {
-   expect(Engineer.github).anything(''); 
+   expect(engineer.getGithub()).toBe('oliviasHub'); 
 })
   
+test('creates role for Engineer', () => {
+   expect(engineer.getRole()).toBe('Engineer');
+})
+
 module.exports = Engineer;

@@ -1,22 +1,26 @@
 const Employee = require('../lib/Employee.js');
+const employee = new Employee(`Sam`, `123`, `samemail@sample.com`);
 
-jest.mock('../lib/Employee');
 
-test('creates a Employee object', () => {
-  const name = 'Sara';
-  const employee = new Employee(name);
-  expect(employee.name).toBe(name);
+test('creates an Employee object', () => {
+  expect(employee.name).toBe(`Sam`);
+  expect(employee.id).toBe(`123`);
+  expect(employee.email).toBe(`samemail@sample.com`);
 });
+
+test('creates a name for the Employee', () => {
+  expect(employee.getName()).toBe(`Sam`);
+})
+
 
 test('creates an ID for Employee', () => {
-  const id = 1;
-  const employee = new Employee('Trinh', id);
-  expect(employee.id).toBe(id);
-  //expect(Employee.id).toEqual(expect.any(Number));
+  expect(employee.getId()).toBe(`123`);
 });
 
+
+
 test('creates an email for Employee', () => {
-  expect(Employee.email).toContain('@');
+  expect(employee.getEmail()).toBe('samemail@sample.com');
 });
 
 module.exports = Employee;

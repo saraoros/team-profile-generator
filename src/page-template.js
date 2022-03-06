@@ -3,7 +3,13 @@ console.log(employeeData);
 
 const pageHtml = [];
 
-const generateManager = manager => {
+
+
+console.log("hello!! from PAGE-TEMPLATE");
+
+// ********** console.log doesn't work inside of this following function! I originally had it as an arrow function like the generateEngineer example below! ***************
+
+function generateManager(manager) {
  // console.log(manager);
 
     let managerCard = `
@@ -11,7 +17,7 @@ const generateManager = manager => {
     <div class="card-columns flex-md-column">
     <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold"> ${manager.name} </h5>
+          <h5 class="card-title text-light font-weight-bold"> ${manager.managerName} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-mug-hot"></i> Manager</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -22,6 +28,8 @@ const generateManager = manager => {
       </div>`;
       pageHtml.push(managerCard);
 }
+
+
       const generateEngineer = engineer => {
         //console.log(engineer);
         
@@ -58,7 +66,7 @@ const generateIntern = intern => {
       pageHtml.push(internCard);
 }
 
-for (let i = 0; i < employeeData.length; i++) {
+for (let i = 0; i < employeeData; i++) {
   if (employeeData[i].getRole() === 'Manager') {
     generateManager(employeeData[i]);
   }
@@ -78,6 +86,7 @@ return pageHtml.join('');
 
 module.exports = employeeData => {
 
+  // const { generateManager, generateEngineer, generateIntern } = employeeData;
 
 
     return `
@@ -114,3 +123,4 @@ module.exports = employeeData => {
 `
     
 }
+

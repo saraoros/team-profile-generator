@@ -1,76 +1,84 @@
-const teamProfile = (staffMembers) => {
-console.log(staffMembers);
+const generateProfile = (employeeData) => {
+console.log(employeeData);
 
 const pageHtml = [];
+
 const generateManager = manager => {
-  console.log(manager);
+ // console.log(manager);
 
     let managerCard = `
    
     <div class="card-columns flex-md-column">
     <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold"> ${manager.managerName} </h5>
+          <h5 class="card-title text-light font-weight-bold"> ${manager.name} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-mug-hot"></i> Manager</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${manager.managerId} </li>
-          <li class="list-group-item">Email: ${manager.managerEmail} </li>
-          <li class="list-group-item">Office Number: ${manager.managerOffice} </li>
+          <li class="list-group-item">ID: ${manager.id} </li>
+          <li class="list-group-item">Email: ${manager.email} </li>
+          <li class="list-group-item">Office Number: ${manager.officeNumber} </li>
         </ul>
       </div>`;
       pageHtml.push(managerCard);
 }
       const generateEngineer = engineer => {
-        console.log(enginner);
+        //console.log(engineer);
         
         let engineerCard = `
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold"> ${engineer.engineerName} </h5>
+          <h5 class="card-title text-light font-weight-bold"> ${engineer.name} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-glasses"></i>  Engineer</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${engineer.engineerId} </li>
-          <li class="list-group-item">Email: ${engineer.engineerEmail} </li>
-          <li class="list-group-item">Github: <a href="https://github.com/${engineer.github}"> </li>
+          <li class="list-group-item">ID: ${engineer.id} </li>
+          <li class="list-group-item">Email: ${engineer.email} </li>
+          <li class="list-group-item">Github: <a href="https://github.com/${engineer.github}"> ${engineer.github} </li>
         </ul>
       </div>`;
         pageHtml.push(engineerCard);
       }
       
 const generateIntern = intern => {
-  console.log(intern);
+  // console.log(intern);
 
   let internCard = 
   `<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold"> ${intern.internName} </h5>
+          <h5 class="card-title text-light font-weight-bold"> ${intern.name} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-user-graduate"></i> Intern</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID:${intern.internId} </li>
-          <li class="list-group-item">Email: ${intern.internEmail} </li>
-          <li class="list-group-item">School: ${intern.internSchool} </li>
+          <li class="list-group-item">ID:${intern.id} </li>
+          <li class="list-group-item">Email: ${intern.email} </li>
+          <li class="list-group-item">School: ${intern.school} </li>
         </ul>
       </div>`;
       pageHtml.push(internCard);
 }
 
+for (let i = 0; i < employeeData.length; i++) {
+  if (employeeData[i].getRole() === 'Manager') {
+    generateManager(employeeData[i]);
+  }
+  if (employeeData[i].getRole() === 'Engineer') {
+    generateEngineer(employeeData[i]);
+  }
+  if (employeeData[i].getRole() === 'Intern') {
+    generateIntern(employeeData[i]);
+  }
 }
 
-//for loop
+return pageHtml.join('');
+
+}
 
 
 
+module.exports = employeeData => {
 
 
-
-
-
-
-
-module.exports = staffMembers => {
 
     return `
     <!DOCTYPE html>
@@ -97,11 +105,12 @@ module.exports = staffMembers => {
         <p class="lead"></p>
       </div>
     </div>
-  <main> ${teamProfile(staffMembers)} </main>
+  <main> 
+  ${generateProfile(employeeData)}
+  </main>
+
   </body>
 </html>
 `
     
 }
-
-// module.exports = generateManager(), generateEngineer(), generateIntern();

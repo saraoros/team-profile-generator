@@ -1,4 +1,4 @@
-function generateEmployees() {
+function generateManager() {
     return `
    
     <div class="card-columns flex-md-column">
@@ -12,9 +12,11 @@ function generateEmployees() {
           <li class="list-group-item">Email: ${managerEmail} </li>
           <li class="list-group-item">Office Number: ${managerOffice} </li>
         </ul>
-      </div>
-
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      </div>`
+}
+      function generateEngineer() {
+        return `
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
           <h5 class="card-title text-light font-weight-bold"> ${engineerName} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-glasses"></i>  Engineer</p>
@@ -24,25 +26,11 @@ function generateEmployees() {
           <li class="list-group-item">Email: ${engineerEmail} </li>
           <li class="list-group-item">Github: <a href="https://github.com/${github}"> </li>
         </ul>
-      </div>
-
-
-
-
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-        <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold"> ${engineerName} </h5>
-          <p class="card-text text-light"><i class="fa-solid fa-glasses"></i> Engineer</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${engineerId} </li>
-          <li class="list-group-item">Email: ${engineerEmail} </li>
-          <li class="list-group-item">Github: <a href="https://github.com/${github}"> </li>
-        </ul>
-      </div>
-
-
-<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      </div>`
+      }
+      
+function generateIntern() {
+  return `<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
           <h5 class="card-title text-light font-weight-bold"> ${internName} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-user-graduate"></i> Intern</p>
@@ -52,28 +40,9 @@ function generateEmployees() {
           <li class="list-group-item">Email: ${internEmail} </li>
           <li class="list-group-item">School: ${internSchool} </li>
         </ul>
-      </div>
-
-
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-      <div class="card-body bg-primary">
-        <h5 class="card-title text-light font-weight-bold"> ${engineerName} </h5>
-        <p class="card-text text-light"><i class="fa-solid fa-glasses"></i>  Engineer</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${engineerId} </li>
-        <li class="list-group-item">Email: ${engineerEmail} </li>
-        <li class="list-group-item">Github: <a href="https://github.com/${github}"> </li>
-      </ul>
-    </div>
-`
+      </div>`
 }
 
-
-
-
-// Is this format correct? This is also from a module example!
-// Or can I just combine it all above under generateEmployees?
 module.exports = data => {
     const { manager, engineer, intern} = data;
 
@@ -109,4 +78,4 @@ module.exports = data => {
     
 }
 
-module.exports = generateEmployees;
+module.exports = generateManager(), generateEngineer(), generateIntern();

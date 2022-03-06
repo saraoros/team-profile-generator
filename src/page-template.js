@@ -1,39 +1,30 @@
 const generateProfile = (employeeData) => {
-console.log(employeeData);
+  console.log({ employeeData });
 
-const pageHtml = [];
+  const pageHtml = [];
 
-
-
-console.log("hello!! from PAGE-TEMPLATE");
-
-// ********** console.log doesn't work inside of this following function! I originally had it as an arrow function like the generateEngineer example below! ***************
-
-function generateManager(manager) {
- // console.log(manager);
+  const generateManager = (manager) => {
 
     let managerCard = `
    
     <div class="card-columns flex-md-column">
     <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
-          <h5 class="card-title text-light font-weight-bold"> ${manager.managerName} </h5>
+          <h5 class="card-title text-light font-weight-bold"> ${manager.name} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-mug-hot"></i> Manager</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${manager.id} </li>
-          <li class="list-group-item">Email: ${manager.email} </li>
+          <li class="list-group-item">Email: <a href="mailto:${manager.email}"> ${manager.email}</a></li>
           <li class="list-group-item">Office Number: ${manager.officeNumber} </li>
         </ul>
       </div>`;
-      pageHtml.push(managerCard);
-}
+    pageHtml.push(managerCard);
+  };
 
+  const generateEngineer = (engineer) => {
 
-      const generateEngineer = engineer => {
-        //console.log(engineer);
-        
-        let engineerCard = `
+    let engineerCard = `
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
           <h5 class="card-title text-light font-weight-bold"> ${engineer.name} </h5>
@@ -41,55 +32,47 @@ function generateManager(manager) {
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${engineer.id} </li>
-          <li class="list-group-item">Email: ${engineer.email} </li>
-          <li class="list-group-item">Github: <a href="https://github.com/${engineer.github}"> ${engineer.github} </li>
+          <li class="list-group-item">Email: <a href="mailto:${engineer.email}"> ${engineer.email}</a></li>
+          <li class="list-group-item">Github: <a href="https://github.com/${engineer.github}"> ${engineer.github} </a></li>
         </ul>
       </div>`;
-        pageHtml.push(engineerCard);
-      }
-      
-const generateIntern = intern => {
-  // console.log(intern);
+    pageHtml.push(engineerCard);
+  };
 
-  let internCard = 
-  `<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+  const generateIntern = (intern) => {
+
+
+    let internCard = `<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <div class="card-body bg-primary">
           <h5 class="card-title text-light font-weight-bold"> ${intern.name} </h5>
           <p class="card-text text-light"><i class="fa-solid fa-user-graduate"></i> Intern</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID:${intern.id} </li>
-          <li class="list-group-item">Email: ${intern.email} </li>
+          <li class="list-group-item">ID: ${intern.id} </li>
+          <li class="list-group-item">Email: <a href="mailto:${intern.email}"> ${intern.email}</a></li>
           <li class="list-group-item">School: ${intern.school} </li>
         </ul>
       </div>`;
-      pageHtml.push(internCard);
-}
+    pageHtml.push(internCard);
+  };
 
-for (let i = 0; i < employeeData; i++) {
-  if (employeeData[i].getRole() === 'Manager') {
-    generateManager(employeeData[i]);
+  for (let i = 0; i < employeeData.length; i++) {
+    if (employeeData[i].getRole() === 'Manager') {
+      generateManager(employeeData[i]);
+    }
+    if (employeeData[i].getRole() === 'Engineer') {
+      generateEngineer(employeeData[i]);
+    }
+    if (employeeData[i].getRole() === 'Intern') {
+      generateIntern(employeeData[i]);
+    }
   }
-  if (employeeData[i].getRole() === 'Engineer') {
-    generateEngineer(employeeData[i]);
-  }
-  if (employeeData[i].getRole() === 'Intern') {
-    generateIntern(employeeData[i]);
-  }
-}
 
-return pageHtml.join('');
+  return pageHtml.join('');
+};
 
-}
-
-
-
-module.exports = employeeData => {
-
-  // const { generateManager, generateEngineer, generateIntern } = employeeData;
-
-
-    return `
+function generatePage(employeeData) {
+  return `
     <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -116,11 +99,12 @@ module.exports = employeeData => {
     </div>
   <main> 
   ${generateProfile(employeeData)}
+
   </main>
 
   </body>
 </html>
-`
-    
+`;
 }
 
+module.exports = generatePage;

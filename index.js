@@ -1,2 +1,2 @@
-const TeamProfile = require('./lib/generateTeam');
+const TeamProfile = require('./generateTeam');
 new TeamProfile().getManager();

@@ -1,15 +1,15 @@
 const inquirer = require('inquirer');
 //const { prompt } = require('inquirer');
-const generatePage = require('../src/page-template');
+const generatePage = require('./src/page-template');
 
-const Manager = require('./Manager');
-const Engineer = require('./Engineer');
-const Intern = require('./Intern');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 const staffMembers = [];
 
 const fs = require('fs');
-const { writeFile } = require('../utils/generate-site');
+const { writeFile } = require('./utils/generate-site');
 
 
 class TeamProfile {
@@ -135,7 +135,7 @@ class TeamProfile {
             =====================================
             `
           );
-           staffDataOutput();
+           staffDataOutput(staffMembers);
         }
       });
   }
@@ -217,9 +217,11 @@ class TeamProfile {
 
 // ******
 function staffDataOutput(staffMembers) {
-  fs.writeFile('./dist/index.html', generatePage(staffMembers));  
-  
-  // this function effectively takes you to page-template.js but then gets an error! console.log on top of page-template.js works!!
-}
+console.log('We are inside staffDataOutput \n ',{staffMembers})
+
+     fs.writeFile('./dist/index.html', generatePage(staffMembers), (err) => console.log(err));  
+     
+   }
+
 
 module.exports = TeamProfile;

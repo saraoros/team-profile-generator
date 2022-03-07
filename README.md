@@ -17,7 +17,7 @@
 
   # Installation
 
-  - In order to use this project, please make sure that you have Node downloaded onto your machine. If you need help downloading Node, you can download Node on their webpage here: https://nodejs.org/en/download/. Then run the command `node index` and answer the question prompts to create your team's web page.
+  - In order to use this project, please make sure that you have Node downloaded onto your machine. If you need help downloading Node, you can download Node on their webpage here: https://nodejs.org/en/download/. After downloading `Node` run the command `npm i` and then run the command `node index` and answer the question prompts to create your team's web page.
 
   # Technologies
 
